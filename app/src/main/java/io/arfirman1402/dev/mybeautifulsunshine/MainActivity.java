@@ -2,6 +2,7 @@ package io.arfirman1402.dev.mybeautifulsunshine;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.rv_weather_list)
     RecyclerView mWeatherList;
 
+    private WeatherAdapter mWeatherAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +36,13 @@ public class MainActivity extends AppCompatActivity {
         mWeatherImage.setImageResource(R.mipmap.ic_launcher_round);
         mWeatherDesc.setText("Cerah Banget");
         mWeatherTemperature.setText("32 Derajat");
+
+        LinearLayoutManager mWeatherLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mWeatherList.setLayoutManager(mWeatherLayoutManager);
+        mWeatherList.setHasFixedSize(true);
+
+        mWeatherAdapter = new WeatherAdapter();
+        mWeatherList.setAdapter(mWeatherAdapter);
+
     }
 }
