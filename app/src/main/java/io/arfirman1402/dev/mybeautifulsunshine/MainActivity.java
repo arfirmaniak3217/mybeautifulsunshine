@@ -1,13 +1,37 @@
 package io.arfirman1402.dev.mybeautifulsunshine;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.txt_day)
+    TextView mWeatherDay;
+    @BindView(R.id.img_weather)
+    ImageView mWeatherImage;
+    @BindView(R.id.txt_weather_desc)
+    TextView mWeatherDesc;
+    @BindView(R.id.txt_temperature)
+    TextView mWeatherTemperature;
+    @BindView(R.id.rv_weather_list)
+    RecyclerView mWeatherList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+
+        mWeatherDay.setText("Minggu");
+        mWeatherImage.setImageResource(R.mipmap.ic_launcher_round);
+        mWeatherDesc.setText("Cerah Banget");
+        mWeatherTemperature.setText("32 Derajat");
     }
 }
